@@ -6,13 +6,17 @@ export default {
     let result = movies;
 
     if (filter.search) {
-      result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
+      result = result.filter((movie) =>
+        movie.title.toLowerCase().includes(filter.search.toLowerCase())
+      );
     }
     if (filter.genre) {
-      result = result.filter(movie => movie.genre.toLowerCase() === filter.genre);
+      result = result.filter(
+        (movie) => movie.genre.toLowerCase() === filter.genre
+      );
     }
     if (filter.year) {
-      result = result.filter(movie => movie.year === Number(filter.year));
+      result = result.filter((movie) => movie.year === Number(filter.year));
     }
 
     return result;
@@ -25,12 +29,12 @@ export default {
   create(movieData) {
     const newId = uuid();
 
-    movies.push({ 
-      id: newId, 
+    movies.push({
+      id: newId,
       ...movieData,
-      rating: Number(movieData.rating) 
+      rating: Number(movieData.rating),
     });
 
     return newId;
-  }
+  },
 };
