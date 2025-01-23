@@ -14,7 +14,7 @@ export default [
   {
     id: '4v86f6f5-a29e-4cbe-8083-ae24db47484gu',
     title: "Man of Steel",
-    genre: "Action",
+    genre: "Superhero",
     description:
       "An alien child is evacuated from his dying world and sent to Earth to live among humans. His peace is threatened, when survivors of his home planet invade Earth.",
     imageUrl: 'https://picfiles.alphacoders.com/108/thumb-1920-108646.jpg',
