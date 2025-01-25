@@ -19,7 +19,7 @@ movieController.post("/create", async (req, res) => {
 
   await movieService.create(newMovie);
 
-  res.redirect("/");
+  res.redirect('/');
 });
 
 movieController.get("/:movieId/details", async (req, res) => {
