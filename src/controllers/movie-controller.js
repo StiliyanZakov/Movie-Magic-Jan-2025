@@ -47,4 +47,15 @@ movieController.post('/:movieId/attach-cast', async (req, res) => {
     res.redirect(`/movies/${movieId}/details`);
 });
 
+const getMovieWithCasts = async (req, res) => {
+    try {
+        const movieId = req.params.id;
+        const movie = await movieService.getOneWithCasts(movieId);
+        res.json(movie);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
+
 export default movieController;
+export { getMovieWithCasts };

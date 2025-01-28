@@ -1,6 +1,6 @@
- import Movie from "../models/movie.js";
+import Movie from "../models/movie.js";
 
-export default {
+const movieService = {
   getAll(filter = {}) {
 
     let query = Movie.find({});
@@ -25,6 +25,7 @@ export default {
 
     return result;
   },
+
   create(movieData) {
     const result = Movie.create({
       ...movieData,
@@ -44,5 +45,11 @@ export default {
 
   // Aatach #2
 
+  },
+  async getOneWithCasts(movieId) {
+    const movie = await Movie.findById(movieId).populate('casts');
+    return movie;
   }
-}
+};
+
+export default movieService;
