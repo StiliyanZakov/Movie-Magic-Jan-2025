@@ -1,6 +1,7 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import mongoose from "mongoose";
+import 'dotenv/config.js';
 
 import routes from "./routes.js";
 import showRatingHelper from "./helpers/rating-helper.js";
@@ -10,7 +11,7 @@ const app = express();
 // db configuration
 try {
   const url = "mongodb://127.0.0.1:27017/magic-movies-jan-2025";
-  await mongoose.connect(url);
+  await mongoose.connect(url); // Use the url variable directly
 
   console.log("DB connected Successfully!");
 
