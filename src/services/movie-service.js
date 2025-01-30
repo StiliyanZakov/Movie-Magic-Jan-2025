@@ -37,7 +37,7 @@ export default {
 
         return result;
     },
-    async attachCast(movieId, castId) {
+       attachCast(movieId, castId) {
 
         // Attach #1
         // const movie = await Movie.findById(movieId);
