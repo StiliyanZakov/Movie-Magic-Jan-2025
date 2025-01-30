@@ -3,37 +3,34 @@ import authService from "../services/auth-service.js";
 
 const authController = Router();
 
-authController.get('/register', (req, res) => {
-    res.render('auth/register');
+authController.get("/register", (req, res) => {
+  res.render("auth/register");
 });
 
-authController.post('/register', async (req, res) => {
-    const userData = req.body;
+authController.post("/register", async (req, res) => {
+  const userData = req.body;
 
-    await authService.register(userData);
+  await authService.register(userData);
 
-    res.redirect('/auth/login');
+  res.redirect("/auth/login");
 });
 
-authController.get('/login', (req, res) => {
-    res.render('auth/login');
+authController.get("/login", (req, res) => {
+  res.render("auth/login");
 });
 
-authController.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+authController.post("/login", async (req, res) => {
+  const { email, password } = req.body;
 
-    try {
-     const token =  await authService.login(email, password);
-     console.log(token);
-     
-    } catch (error) {
-        console.log(error.message);
-       return res.redirect('/404');
-        
-    }
-    
+  try {
+    const token = await authService.login(email, password);
 
-    res.redirect('/');
+    res.cookie("auth-cookie", token);
+    res.redirect("/");
+  } catch (error) {
+    console.log(error.message);
+    res.redirect("/404");
+  }
 });
 
 export default authController;
