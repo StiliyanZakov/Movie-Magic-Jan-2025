@@ -7,9 +7,8 @@ export const authMiddleware = (req, res, next) => {
 
     if (!token) {
         return next();
-        
     }
-    // Validate token
+    
   try {
     const decodedToken = jwt.verify(token, SECRET);
 
@@ -20,5 +19,4 @@ export const authMiddleware = (req, res, next) => {
     res.clearCookie('auth-cookie');
     res.redirect('/auth/login');
   }
- 
 };
