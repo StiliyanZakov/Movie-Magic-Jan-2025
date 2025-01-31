@@ -7,6 +7,7 @@ const userSchema = new Schema({
 });
 
 userSchema.pre("save", async function () {
+    // TO DO: Add validation for email and password
     console.log(this);
     
     this.password = await bcrypt.hash(this.password, 10);
