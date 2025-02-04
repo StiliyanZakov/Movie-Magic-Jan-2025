@@ -1,4 +1,3 @@
-import { populate } from 'dotenv';
 import { Schema, Types, model } from 'mongoose';
 
 // Create a schema
@@ -8,7 +7,7 @@ const movieSchema = new Schema({
         required: [true, 'Title is requred!'],
         minLength: [5, 'Title should be at least 5 characters long!'],
         maxLength: 50,
-        match: [/^[a-zA 0-9]+$/, 'Title should be alphanumeric, degits and whitespaces only!']
+        match: [/^[a-zA-Z 0-9]+$/, 'Title should be alphanumeric, degits and whitespaces only!']
     },
     category: String,
     genre: {
@@ -16,13 +15,13 @@ const movieSchema = new Schema({
         required: [true, 'Genre is requred!'],
         minLength: [5, 'Genre should be at least 5 characters long!'],
         maxLength: 50,
-        match: [/^[a-zA 0-9]+$/, 'Genre should be alphanumeric, degits and whitespaces only!']
+        match: [/^[a-zA-Z 0-9]+$/, 'Genre should be alphanumeric, degits and whitespaces only!']
     },
     director: {
         type: String,
          minLength: [5, 'Director should be at least 5 characters long!'],
         maxLength: 50,
-        match: [/^[a-zA 0-9]+$/, 'Director should be alphanumeric, degits and whitespaces only!']
+        match: [/^[a-zA-Z 0-9]+$/, 'Director should be alphanumeric, degits and whitespaces only!']
     },
     year: {
         type: Number,
@@ -41,7 +40,7 @@ const movieSchema = new Schema({
     description: {
         type: String,
         minLength: 20,
-        match: /^[a-zA 0-9]+$/,
+        match: /^[a-zA-Z 0-9]+$/,
     },
     casts: [{
         type: Types.ObjectId,
