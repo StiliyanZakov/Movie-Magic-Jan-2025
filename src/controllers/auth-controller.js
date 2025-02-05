@@ -15,12 +15,9 @@ authController.post("/register", async (req, res) => {
   try {
     await authService.register(userData);
   } catch (err) {
-    // Log the error optionally
+
    const error = getErrorMessage(err);
 
-   // Show error on the page
-
-   // Return to register page
    return res.render('auth/register', {error});
   }
 
@@ -39,9 +36,8 @@ authController.post("/login", async (req, res) => {
 
     res.cookie("auth-cookie", token), { httpOnly: true };
     res.redirect("/");
-  } catch (error) {
-    console.log(error.message);
-    res.redirect("/404");
+  } catch (err) {
+     return res.render('auth/login', {error: getErrorMessage(err) })
   }
 });
 
