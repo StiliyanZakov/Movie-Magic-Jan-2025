@@ -1,6 +1,7 @@
 import { Router } from "express";
 import authService from "../services/auth-service.js";
 import { isAuth } from "../middlewares/auth-middleware.js";
+import { getErrorMessage } from "../utils/error-utils.js";
 
 const authController = Router();
 
@@ -11,7 +12,11 @@ authController.get("/register", (req, res) => {
 authController.post("/register", async (req, res) => {
   const userData = req.body;
 
-  await authService.register(userData);
+  try {
+    await authService.register(userData);
+  } catch (err) {
+   console.log(getErrorMessage(err));
+  }
 
   res.redirect("/auth/login");
 });
@@ -34,10 +39,10 @@ authController.post("/login", async (req, res) => {
   }
 });
 
-authController.get('/logout', isAuth, (req, res) => {
-  res.clearCookie('auth-cookie');
+authController.get("/logout", isAuth, (req, res) => {
+  res.clearCookie("auth-cookie");
 
-  res.redirect('/');
+  res.redirect("/");
 });
 
 export default authController;

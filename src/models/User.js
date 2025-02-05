@@ -1,9 +1,10 @@
-import { Schema, model } from "mongoose";
+import { Schema, model} from "mongoose";
 import bcrypt from "bcrypt";
 
 const userSchema = new Schema({
     email: {
     type: String,
+    required: true,
     unique: true, // This is not a validator, it's index
     match: /\@[a-zA-Z]+.[a-zA-Z]+$/,
     minLength: 10,
@@ -11,7 +12,8 @@ const userSchema = new Schema({
     password: {
     type: String,
     match: /^\w+$/,
-    minLength: 6,
+    minLength: [6, 'Password should be at least 6 charecters!'],
+    trim: true, // Sanitizer
     },
 });
 
